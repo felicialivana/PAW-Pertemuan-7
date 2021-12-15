@@ -1,31 +1,4 @@
 ////LATIHAN 7.9 - BODY PARSER
-// var http = require('http');
-// var express = require('express');
-// var app = express()
-// var bodyParser = require('body-parser');
-
-// app.use(bodyParser.urlencoded({extended:false}));
-// app.use(bodyParser.json());
-
-// var persons = []
-// app.post('/person', (req, res)=>{
-//     persons.push(req.body)
-//     res.json(req.body)
-// })
-// app.get('/person', (req, res)=>{
-//     res.json(persons) 
-// })
-// http.createServer(app).listen(8000, ()=>{
-//     console.log('Server is running on port 8000')
-// }); 
-
-
-
-
-
-
-
-////BODY PARSER
 var http = require('http');
 var express = require('express');
 var app = express()
@@ -34,38 +7,65 @@ var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 
-var cars = ['Toyota', 'Honda']
-
-//routing url
-app.get('/', (req,res)=>{
-    res.end('Konten dari method GET')
+var persons = []
+app.post('/person', (req, res)=>{
+    persons.push(req.body)
+    res.json(req.body)
 })
-
-app.get('/home', (req,res)=>{
-    res.end('Ini Route URL Home')
+app.get('/person', (req, res)=>{
+    res.json(persons) 
 })
-  
-app.get('/data', (req, res)=>{
-    res.json(cars) 
-    // res.status(200).json(cars) 
-    // res.status(400).json(cars) //status 400/404 = error 
-})
-
-app.post('/data', (req, res)=>{
-    var mobil = req.body.mobil
-    cars.push(mobil)
-    res.end("Data Berhasil Ditambahkan") 
-})
-
-
-app.get('/data/:id', (req,res)=>{
-    var index = req.params.id
-    res.end(cars[index])
-}) 
-
-app.listen(8000, ()=>{
+http.createServer(app).listen(8000, ()=>{
     console.log('Server is running on port 8000')
 }); 
+
+
+
+
+
+
+
+////BODY PARSER
+// var http = require('http');
+// var express = require('express');
+// var app = express()
+// var bodyParser = require('body-parser');
+
+// app.use(bodyParser.urlencoded({extended:false}));
+// app.use(bodyParser.json());
+
+// var cars = ['Toyota', 'Honda']
+
+// //routing url
+// app.get('/', (req,res)=>{
+//     res.end('Konten dari method GET')
+// })
+
+// app.get('/home', (req,res)=>{
+//     res.end('Ini Route URL Home')
+// })
+  
+// app.get('/data', (req, res)=>{
+//     res.json(cars) 
+//     // res.status(200).json(cars) 
+//     // res.status(400).json(cars) //status 400/404 = error 
+// })
+
+// app.post('/data', (req, res)=>{
+//     var mobil = req.body.mobil
+//     cars.push(mobil)
+//     res.end("Data Berhasil Ditambahkan") 
+// })
+
+
+// app.get('/data/:id', (req,res)=>{
+//     var index = req.params.id
+//     res.end(cars[index])
+// }) 
+
+// app.listen(8000, ()=>{
+//     console.log('Server is running on port 8000')
+// }); 
 
 
 
